@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <title>Carros</title>
+</head>
+<body>
+    <h1>Carros de Luxo</h1>
+
+    <div class="produtos1" id="produtos1">
+        <figure><img class="prod" src="assets/ferrari812superfast.png" alt="Ferrari 812 superfast">
+        <figcaption>Ferrari 812 Superfast</figcaption>
+        </figure>
+        <figure><img class="prod" src="assets/ferrari portofino.avif" alt="Ferrari Portofino"><figcaption>Ferrari Portofino</figcaption>
+        </figure>
+        <figure><img class="prod" src="assets/McLaren-765LT.jpg" alt="McLaren 765LT"><figcaption>McLaren 765LT</figcaption>
+        </figure>
+        <figure><img class="prod" src="assets/mclaren-artura.jpg" alt="McLaren Artura"><figcaption>McLaren Artura</figcaption>
+        </figure>
+    
+        <figure><img class="prod" src="assets/rolls-royce-ghost.png" alt="Rolls-Royce Ghost"><figcaption>Rolls-Royce Ghost</figcaption>
+        </figure>
+        <figure><img class="prod" src="assets/rolls-royce-spectre.avif" alt="Rolls-Royce Spectre"><figcaption>Rolls-Royce Spectre</figcaption>
+        </figure>
+        <figure><img class="prod" src="assets/mercedes-benz-amg-63.avif" alt="Mercedes-Benz AMG GT"><figcaption>Mercedes-Benz AMG GT</figcaption>
+        </figure>
+        <figure><img class="prod" src="assets/mercedes-benz-amg-63-2.jpg" alt="Mercedes-Benz AMG GT 63"><figcaption>Mercedes-Benz AMG GT 63</figcaption>
+        </figure>
+    </div>
+
+<!-- CSS -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    line-height: 1.5;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 2rem;  
+}
+
+/* Produtos */
+.produtos1, .produtos2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+figure {
+    background: #111111;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+figure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
+
+.prod {
+    width: 100%;
+    /* max-width: 280px; */
+    height: 80%;
+    
+    border-radius: 0.5rem;
+    display: block;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+figcaption {
+    margin-top: 0.75rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: #ffffff;
+}
+
+figcaption:hover {
+    color: red;
+}
+
+/* Media Querie */
+/* Celulares */
+@media (max-width: 576px) {
+
+    figcaption {
+        font-size: 0.85rem;
+    }
+
+    .produtos1.produtos2{
+        max-width: 100px;
+    }
+}
+
+</style>
+</body>
+</html>
+
+

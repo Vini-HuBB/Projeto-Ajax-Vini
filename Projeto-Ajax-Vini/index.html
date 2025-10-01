@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Ajax Vini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body{
+            background-color: black;
+            font-family: "Poppins", sans-serif;}
+
+        nav {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 0 15px;
+        }
+
+        nav a:hover {
+            color: blue;
+        }
+
+        .pagina {
+            min-height: 300px;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href wm-link="series.html" wm-destino=".pagina">Séries</a>
+        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+        <a href wm-link="jogos.html" wm-destino=".pagina">Jogos</a>
+        <a href wm-link="carros.html" wm-destino=".pagina">Carros</a>
+        <a href wm-link="marcas.html" wm-destino=".pagina">Marcas</a>
+    </nav>
+
+    <div class="pagina">
+        <h1>Bem-vindo à Loja Ajax</h1>
+        <p>Escolha uma das abas acima para navegar.</p>
+    </div>
+
+    <script>
+        function navegarViaAjax(url, seletor, push = true) {
+            if (!url || !seletor) return
+            const elemento = document.querySelector(seletor)
+            fetch(url)
+                .then(resp => resp.text())
+                .then(html => elemento.innerHTML = html)
+
+            if (push) {
+                history.pushState({ seletor, url }, "Página Ajax", url)
+            }
+        }
+
+        document.querySelectorAll('[wm-link]').forEach(link => {
+            const url = link.getAttribute('wm-link')
+            const selectorDestino = link.getAttribute('wm-destino')
+
+            link.onclick = e => {
+                e.preventDefault()
+                navegarViaAjax(url, selectorDestino)
+            }
+        })
+
+        // Estado inicial (home)
+        history.replaceState({ seletor: ".pagina", url: null }, "Página Inicial", window.location.pathname)
+
+        // Detecta clique em Voltar/Avançar do navegador
+        window.onpopstate = e => {
+            if (e.state && e.state.url) {
+                navegarViaAjax(e.state.url, e.state.seletor, false)
+            } else {
+                document.querySelector(".pagina").innerHTML = `
+                    <h1>Bem-vindo à Loja Ajax</h1>
+                    <p>Escolha uma das abas acima para navegar.</p>
+                `
+            }
+        }
+    </script>
+</body>
+</html>
